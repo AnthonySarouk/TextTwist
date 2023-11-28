@@ -2,6 +2,7 @@ require('dotenv').config();
 const axios = require('axios');
 const paraphraseApiKey = process.env.RAPIDAPI_KEY_PARAPHRASER;
 
+// Function to call the paraphrasing API and return the rewritten text
 async function paraphrase(text, strength = 3) {
     const options = {
         method: 'POST',

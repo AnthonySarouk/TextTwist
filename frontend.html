@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- This is the main header containing the application title and dark mode toggle -->
     <header class="welcome-page">
         <h1>TextTwist</h1>
         <p>Choose a tool</p>
@@ -15,7 +16,8 @@
             <label for="darkModeToggle">Dark Mode</label>
         </div>
     </header>
-    
+
+    <!-- This is the welcome overlay that appears when you first enter the site -->
     <div class="welcome-overlay">
         <div class="overlay-content">
             <h2>Welcome to TextTwist!</h2>
@@ -23,6 +25,7 @@
             <button onclick="enterSite()">Enter</button>
         </div>
     </div>
+<!-- This is the sidebar navigation for selecting different text manipulation tools -->
     <nav class="sidebar">
         <ul>
             <li><a href="#" onclick="switchOption('paraphraser')">Paraphraser</a></li>
@@ -31,6 +34,7 @@
         </ul>
     </nav>
 
+    <!-- This is the main content area where users interact with the text manipulation tools -->
     <main class ="hidden">
        
         <div class="input-container">
@@ -60,9 +64,7 @@
                 <option value="fa">Persian</option>
                 <option value="id">Indonesian</option>
                 <option value="la">Latin</option>
-                <option value="tl">Filipino</option>
-
-                
+                <option value="tl">Filipino</option>                
             </select>
             </div>
             <div>
@@ -87,6 +89,7 @@
         
     </main>
 
+    <!-- These scripts handle the client-side logic for the application -->
     <script>
                 
         if (localStorage.getItem('dark-mode') === 'enabled') {
@@ -157,19 +160,12 @@
         }
         main.classList.remove('hidden');
         document.querySelector(`.sidebar a[href="#"][onclick="switchOption('${option}')"]`).classList.add('open');
-    
-
-        
         }
-       
-        
-        
         function copyOutputToClipboard() {
             const outputTextarea = document.getElementById('outputText');
             outputTextarea.select();
             document.execCommand('copy');
-            alert('Output copied to clipboard!'); 
-
+            alert('Output copied to clipboard!');
         }
 
         function updateStrengthDisplay(value) {
@@ -181,7 +177,6 @@
             const outputSentencesInput = document.getElementById('outputSentences');
             outputSentencesInput.max = numOfSentences;
 
-           
             if(outputSentencesInput.value > numOfSentences) {
                 outputSentencesInput.value = numOfSentences;
             }
@@ -205,10 +200,6 @@
             document.getElementById('inputCharCount').textContent = inputCharCount;
             document.getElementById('outputCharCount').textContent = outputCharCount;
         }
-
-
-
-
         async function processText() {
             const inputText = document.getElementById('inputText').value;
             const processButton = document.getElementById('process-button');
@@ -256,9 +247,6 @@
                 document.getElementById('outputText').value = "Error processing the text.";
             }
         }
-
-
-
         function autoResizeTextarea(textarea) {
             textarea.style.height = 'auto';
             textarea.style.height = (textarea.scrollHeight) + 'px';
